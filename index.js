@@ -1,5 +1,5 @@
 import { program } from "commander";
-import { createFile } from "./files.js";
+import { createFile, getFiles, getFileInfo } from "./files.js";
 program
   .option("-a, --action <type>", "choose action")
   .option("-f, --fileName <type>", "File name")
@@ -11,14 +11,16 @@ const options = program.opts();
 
 async function invokeAction({ action, fileName, content }) {
   switch (action) {
-    case "create":
-        createFile(fileName, content);
+    case "createFile":
+      createFile(fileName, content);
       break;
 
-    case "":
+    case "getFiles":
+      getFiles();
       break;
 
-    case "":
+    case "getFileInfo":
+      getFileInfo(fileName);
       break;
 
     default:
